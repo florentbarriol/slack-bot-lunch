@@ -1,11 +1,14 @@
+//https://slack.dev/bolt/concepts#commands
+const _ = require('lodash');
 const { App } = require('@slack/bolt');
 const RESTAURANTS = require('./datas/restaurants');
 const DISLIKES = require('./datas/dislikes');
-const _ = require('lodash');
-//https://slack.dev/bolt/concepts#commands
 
-const SLACK_BOT_TOKEN = 'xoxb-7027219079-962235032470-QeMbkljkr3RRIYwUoXPIrqR3';
-const SLACK_SIGNING_SECRET = '849e4b07414c747434e6107eeebe1737';
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
+const { SLACK_BOT_TOKEN, SLACK_SIGNING_SECRET } = process.env;
 
 const app = new App({
   token: SLACK_BOT_TOKEN,
