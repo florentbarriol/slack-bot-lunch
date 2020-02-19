@@ -1,0 +1,19 @@
+{
+  "name": "slack-bot-lunch",
+  "version": "1.0.0",
+  "description": "Slack bot to decide where we go to lunch",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@slack/bolt": "^1.6.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "ngrok": "^3.2.7"
+  },
+  "scripts": {
+    "dev": "node index.js",
+    "proxy": "ngrok http 3000"
+  }
+}

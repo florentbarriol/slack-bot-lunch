@@ -1,0 +1,87 @@
+import { StringIndexed } from '../helpers';
+import { RespondArguments, AckFn } from '../utilities';
+/**
+ * Known view action types
+ */
+export declare type SlackViewAction = ViewSubmitAction | ViewClosedAction;
+/**
+ * Arguments which listeners and middleware receive to process a view submission event from Slack.
+ */
+export interface SlackViewMiddlewareArgs<ViewActionType extends SlackViewAction = SlackViewAction> {
+    payload: ViewOutput;
+    view: this['payload'];
+    body: ViewActionType;
+    ack: AckFn<string | RespondArguments>;
+}
+interface PlainTextElementOutput {
+    type: 'plain_text';
+    text: string;
+    emoji: boolean;
+}
+/**
+ * A Slack view_submission event wrapped in the standard metadata.
+ *
+ * This describes the entire JSON-encoded body of a view_submission event.
+ */
+export interface ViewSubmitAction {
+    type: 'view_submission';
+    team: {
+        id: string;
+        domain: string;
+        enterprise_id?: string;
+        enterprise_name?: string;
+    };
+    user: {
+        id: string;
+        name: string;
+        team_id?: string;
+    };
+    view: ViewOutput;
+    api_app_id: string;
+    token: string;
+}
+/**
+ * A Slack view_closed event wrapped in the standard metadata.
+ *
+ * This describes the entire JSON-encoded body of a view_closed event.
+ */
+export interface ViewClosedAction {
+    type: 'view_closed';
+    team: {
+        id: string;
+        domain: string;
+        enterprise_id?: string;
+        enterprise_name?: string;
+    };
+    user: {
+        id: string;
+        name: string;
+        team_id?: string;
+    };
+    view: ViewOutput;
+    api_app_id: string;
+    token: string;
+    is_cleared: boolean;
+}
+export interface ViewOutput {
+    id: string;
+    callback_id: string;
+    team_id: string;
+    app_id: string | null;
+    bot_id: string;
+    title: PlainTextElementOutput;
+    type: string;
+    blocks: StringIndexed;
+    close: PlainTextElementOutput | null;
+    submit: PlainTextElementOutput | null;
+    state: object;
+    hash: string;
+    private_metadata: string;
+    root_view_id: string | null;
+    previous_view_id: string | null;
+    clear_on_close: boolean;
+    notify_on_close: boolean;
+    external_id?: string;
+}
+export {};
+//# sourceMappingURL=index.d.ts.map
