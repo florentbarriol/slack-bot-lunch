@@ -14,7 +14,7 @@
     "ngrok": "^3.2.7"
   },
   "scripts": {
-    "dev": "node index.js",
+    "start": "node index.js",
     "proxy": "ngrok http 3000"
   }
 }
