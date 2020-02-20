@@ -22,11 +22,11 @@ app.command('/lunch', async ({ command, ack, say }) => {
   const missingPeople = _.lowerCase(command.text).split(',');
   const currentDislikesByPeople = _.omit(DISLIKES, missingPeople);
   const dislikes = _.union(...Object.values(currentDislikesByPeople));
-  const proposals = _.shuffle(
+  const pickedProposals = _.sample(
     _.difference(Object.values(RESTAURANTS), dislikes)
   );
   const proposal =
-    proposals.length > 0 ? proposals[0] : 'Erf ! Aucune proposition !';
+    pickedProposals ? pickedProposals : 'Erf ! Aucune proposition !';
 
   console.log(
     `Missing people are ${missingPeople.join(', ')}. The choice is ${proposal}.`
