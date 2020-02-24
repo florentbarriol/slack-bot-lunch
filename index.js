@@ -20,6 +20,10 @@ app.command('/lunch', async ({ command, ack, say }) => {
   ack();
 
   const missingPeople = _.lowerCase(command.text).split(',');
+  if (-1 === _.indexOf(missingPeople, 'virgile')) {
+    say(`🍽 Virgile n’est pas là ? Tous à Piada ! :all_the_things:`);
+  }
+
   const currentDislikesByPeople = _.omit(DISLIKES, missingPeople);
   const dislikes = _.union(...Object.values(currentDislikesByPeople));
   const pickedProposals = _.sample(
