@@ -27,4 +27,5 @@ module.exports = {
   MOULIN_A_SALADES: 'Le moulin à salades',
   AMELIE_CREPE: 'Amélie Crêpe',
   LA_CRIEE: 'La Criée',
+  CHEZ_FLO: 'Tous chez P’tit Flo',
 };
