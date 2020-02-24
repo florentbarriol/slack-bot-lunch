@@ -24,5 +24,8 @@ module.exports = {
   SUSHI_SHOP: 'Sushi Shop',
   BOULANGERIE_DU_BOUT_DU_MONDE: 'La boulangerie du bout du monde',
   MOB_HOTEL: 'Mob Hôtel',
-  MOULIN_A_SALADES: 'Le moulin à salades'
+  MOULIN_A_SALADES: 'Le moulin à salades',
+  AMELIE_CREPE: 'Amélie Crêpe',
+  LA_CRIEE: 'La Criée',
+  CHEZ_FLO: 'Tous chez P’tit Flo',
 };
